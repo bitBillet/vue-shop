@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ul>
+      <li v-for="route in $router.options.routes" :key="route.name">
+        <router-link v-if="route.name !== 'product'" :to="route.path">{{ route.name }}</router-link>
+      </li>
+    </ul>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
 }
 </script>
 
@@ -24,5 +24,17 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul li .router-link-exact-active {
+  color: blue;
+}
+
+ul {
+  list-style: none;
 }
 </style>
